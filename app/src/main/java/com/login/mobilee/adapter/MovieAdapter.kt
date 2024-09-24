@@ -1,12 +1,16 @@
 package com.login.mobilee.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.login.mobilee.DetailBuahActivity
+import com.login.mobilee.DetailMovieActivity
 import com.login.mobilee.R
 import com.login.mobilee.RecycleViewCardMovie
 import com.login.mobilee.model.ModelMovie
@@ -14,7 +18,7 @@ import com.login.mobilee.model.ModelMovie
 class MovieAdapter(
     private val getActivity: RecycleViewCardMovie,
     private val movieList: List<ModelMovie>,
-    private val onItemClick: (Int) -> Unit
+    private val itemClickListener: (Int) -> Unit
 ) :
     RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
 
@@ -40,12 +44,23 @@ class MovieAdapter(
         holder.imgMovie.setImageResource(movieList[position].image)
 
         //ini ketika item di klik
-        holder.cardView.setOnClickListener() {
-            onItemClick(position)
-            Toast.makeText(
-                getActivity, movieList[position].title,
-                Toast.LENGTH_SHORT
-            ).show()
+//        holder.cardView.setOnClickListener() {
+//            onItemClick(position)
+//            Toast.makeText(
+//                getActivity, movieList[position].title,
+//                Toast.LENGTH_SHORT
+//            ).show()
+//
+//
+//        }
+        holder.itemView.setOnClickListener() {
+            val intent = Intent(getActivity, DetailMovieActivity::class.java)
+            intent.putExtra("deskripsi", movieList[position].title)
+            intent.putExtra("image", movieList[position].image)
+            intent.putExtra("tanggal", movieList[position].tanggal)
+            intent.putExtra("sinopsis", movieList[position].sinopsis)
+            //intent.putExtra("judul", itemList[position].judul)
+            getActivity.startActivity(intent)
         }
     }
 

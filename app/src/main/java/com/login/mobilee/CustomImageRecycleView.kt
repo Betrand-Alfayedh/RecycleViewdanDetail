@@ -26,12 +26,8 @@ class CustomImageRecycleView: AppCompatActivity() {
             GridLayoutManager.VERTICAL,false)
 
         //menambah item click listener
-        val adapter = BuahAdapter(Mocklist.getModel() as ArrayList<ModelBuah>){buah ->
-            val intent = Intent(this, DetailBuahActivity::class.java)
-            intent.putExtra("namaBuah",buah.nama)
-            intent.putExtra("gambarBuah",buah.image)
-            startActivity(intent)
-        }
+        val adapter = BuahAdapter(Mocklist.getModel() as ArrayList<ModelBuah>, this)
+
         rv_buah.adapter = adapter
 
 

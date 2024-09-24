@@ -3,7 +3,7 @@ package com.login.mobilee.model
 import com.login.mobilee.R
 
 class ModelBuah (
-    val image : Int, val nama : String
+    val image : Int, val deskripsi : String
 )
 
 //kita bikin array data
@@ -13,23 +13,23 @@ object Mocklist{
     fun getModel() : List<ModelBuah> {
         val itemModel1 = ModelBuah(
             R.drawable.apple,
-            nama = "Apple"
+             "Apple"
         )
         val itemModel2 = ModelBuah(
             R.drawable.grapes,
-            nama = "Anggur"
+             "Anggur"
         )
         val itemModel3 = ModelBuah(
             R.drawable.orange,
-            nama = "Jeruk"
+            "Jeruk"
         )
         val itemModel4 = ModelBuah(
             R.drawable.pear,
-            nama = "Pear"
+             "Pear"
         )
         val itemModel5 = ModelBuah(
             R.drawable.strawberry,
-            nama = "Strawberry"
+             "Strawberry"
         )
 
         val itemList : ArrayList<ModelBuah> = ArrayList()
